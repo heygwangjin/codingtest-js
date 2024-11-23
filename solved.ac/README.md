@@ -1,8 +1,19 @@
 ## 백준 Node.js 입출력 방법 정리
 
-### 한 단어 입력 - 구분자, 띄어쓰기 미포함
+### 로컬 설정
 
-테스트 문제 : [별 찍기 - 1 (2438)](https://www.acmicpc.net/problem/2438)
+로컬에서 입출력 템플릿을 빠르게 사용하고 싶으면, `.bashrc` 혹은 `.zshrc` 파일에 아래 `alias` 키워드들을 작성한다.
+`{path}`에는 자신의 환경에 알맞는 경로로 변경한다. (중괄호까지 포함해서 지우고 변경)
+
+```zsh
+alias cpw="cat {path}/codingtest-js/solved.ac/word.js | pbcopy"
+alias cpl="cat {path}/codingtest-js/solved.ac/line.js | pbcopy"
+alias cpm="cat {path}/codingtest-js/solved.ac/multiline.js | pbcopy"
+```
+
+### 한 단어 입력 - 구분자, 띄어쓰기 미포함
+- 테스트 문제 : [별 찍기 - 1 (2438)](https://www.acmicpc.net/problem/2438)
+- 템플릿 코드 : [word.js](https://github.com/heygwangjin/codingtest-js/blob/main/solved.ac/word.js)
 
 ```js
 function solution(n) {
@@ -36,7 +47,8 @@ rl.on('line', (line) => {
 
 ### 한 줄 입력 - 구분자, 띄어쓰기 포함
 
-테스트 문제 : [A-B (1001)](https://www.acmicpc.net/problem/1001)
+- 테스트 문제 : [A-B (1001)](https://www.acmicpc.net/problem/1001)
+- 템플릿 코드 : [line.js](https://github.com/heygwangjin/codingtest-js/blob/main/solved.ac/line.js)
 
 ```js
 function solution(arr) {
@@ -67,7 +79,8 @@ rl.on("line", (line) => {
 
 ### 여러 줄 입력
 
-테스트 문제 : [A+B - 3(10950)](https://www.acmicpc.net/problem/10950)
+- 테스트 문제 : [A+B - 3(10950)](https://www.acmicpc.net/problem/10950)
+- 템플릿 코드 : [multiline.js](https://github.com/heygwangjin/codingtest-js/blob/main/solved.ac/multiline.js)
 
 ```js
 function solution(arr) {
