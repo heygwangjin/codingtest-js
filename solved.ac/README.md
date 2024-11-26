@@ -2,13 +2,28 @@
 
 ### 로컬 설정
 
-로컬에서 입출력 템플릿을 빠르게 사용하고 싶으면, `.bashrc` 혹은 `.zshrc` 파일에 아래 `alias` 키워드들을 작성한다.
-`{path}`에는 자신의 환경에 알맞는 경로로 변경한다. (중괄호까지 포함해서 지우고 변경)
+#### Alias
+
+- 로컬에서 입출력 템플릿을 빠르게 사용하고 싶으면, `.bashrc` 혹은 `.zshrc` 파일에 아래 `alias` 키워드들을 작성한다.
+- `{path}`에는 자신의 환경에 알맞은 경로로 변경한다. (중괄호까지 포함해서 지우고 변경)
 
 ```zsh
 alias cpw="cat {path}/codingtest-js/solved.ac/word.js | pbcopy"
 alias cpl="cat {path}/codingtest-js/solved.ac/line.js | pbcopy"
 alias cpm="cat {path}/codingtest-js/solved.ac/multiline.js | pbcopy"
+```
+
+#### 풀이 복사
+
+- 문제 풀이 완료 후, 백준에 제출하기 전에 풀이를 빠르게 복사하고 싶은 경우 아래 함수도 함께 추가한다.
+- 사용법은 문제 풀이 파일이 있는 디렉토리에서 `solve {문제번호}` 커맨드를 입력하면 된다.
+- ex. `solve 2438`
+
+```zsh
+solve() {
+  local num="$1"
+  cat "${num}.js" | pbcopy
+}
 ```
 
 ### 한 단어 입력 - 구분자, 띄어쓰기 미포함
