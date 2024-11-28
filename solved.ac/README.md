@@ -1,12 +1,12 @@
-## 백준 Node.js 입출력 방법 정리
-### 로컬 설정
-#### 문제 풀기 명령어
+# 백준 Node.js 입출력 방법 정리
+## 로컬 설정
+### 문제 풀기 명령어
 - 문제를 풀 때 터미널에서 명령어와 문제 번호를 입력해서 입출력 템플릿 코드와 함께 빠르게 에디터를 실행할 수 있다.
   - vscode 사용자는 각 함수의 마지막 라인에서 `nvim` 대신 `code` 명령어로 수정한다.
 - 아래 3개의 함수를 `~/.bashrc` 혹은 `~/.zshrc` 파일에 작성한다.
 - `template_path` 변수의 값은 사용자의 템플릿 파일이 있는 경로에 알맞게 수정한다.
 - ex. `solw 2438 || soll 1001 || solm 10950`
-##### 한 단어 입력 - 구분자, 띄어쓰기 미포함
+#### 한 단어 입력 - 구분자, 띄어쓰기 미포함
 ```zsh
 solw() {
   if [ -z "$1" ]; then
@@ -25,7 +25,7 @@ solw() {
   cat "$template_path" > "${num}.js" && nvim "${num}.js"
 }
 ```
-##### 한 줄 입력 - 구분자, 띄어쓰기 포함
+#### 한 줄 입력 - 구분자, 띄어쓰기 포함
 ```zsh
 soll() {
   if [ -z "$1" ]; then
@@ -44,7 +44,7 @@ soll() {
   cat "$template_path" > "${num}.js" && nvim "${num}.js"
 }
 ```
-##### 여러 줄 입력
+#### 여러 줄 입력
 ```zsh
 solm() {
   if [ -z "$1" ]; then
@@ -63,7 +63,7 @@ solm() {
   cat "$template_path" > "${num}.js" && nvim "${num}.js"
 }
 ```
-#### 풀이 복사
+### 풀이 복사
 - 문제 풀이 완료 후, 백준에 제출하기 전에 풀이를 빠르게 복사하고 싶은 경우 아래 함수도 함께 추가한다.
 - 사용법은 문제 풀이 파일이 있는 디렉토리에서 `solved {문제번호}` 커맨드를 입력하면 된다.
 - ex. `solved 2438`
@@ -73,6 +73,8 @@ solved() {
   cat "${num}.js" | pbcopy
 }
 ```
+## 입출력 템플릿 예시
+- 입출력 템플릿을 사용하여 푼 문제들의 예시 코드이다.
 ### 한 단어 입력 - 구분자, 띄어쓰기 미포함
 - 테스트 문제 : [별 찍기 - 1 (2438)](https://www.acmicpc.net/problem/2438)
 - 템플릿 코드 : [word.js](https://github.com/heygwangjin/codingtest-js/blob/main/solved.ac/word.js)
