@@ -1,35 +1,81 @@
 ## 백준 Node.js 입출력 방법 정리
-
 ### 로컬 설정
-
-#### Alias
-
-- 로컬에서 입출력 템플릿을 빠르게 사용하고 싶으면, `.bashrc` 혹은 `.zshrc` 파일에 아래 `alias` 키워드들을 작성한다.
-- `{path}`에는 자신의 환경에 알맞은 경로로 변경한다. (중괄호까지 포함해서 지우고 변경)
-
+#### 문제 풀기 명령어
+- 문제를 풀 때 터미널에서 명령어와 문제 번호를 입력해서 입출력 템플릿 코드와 함께 빠르게 에디터를 실행할 수 있다.
+  - vscode 사용자는 각 함수의 마지막 라인에서 `nvim` 대신 `code` 명령어로 수정한다.
+- 아래 3개의 함수를 `~/.bashrc` 혹은 `~/.zshrc` 파일에 작성한다.
+- `template_path` 변수의 값은 사용자의 템플릿 파일이 있는 경로에 알맞게 수정한다.
+- ex. `solw 2438 || soll 1001 || solm 10950`
+##### 한 단어 입력 - 구분자, 띄어쓰기 미포함
 ```zsh
-alias cpw="cat {path}/codingtest-js/solved.ac/word.js | pbcopy"
-alias cpl="cat {path}/codingtest-js/solved.ac/line.js | pbcopy"
-alias cpm="cat {path}/codingtest-js/solved.ac/multiline.js | pbcopy"
+solw() {
+  if [ -z "$1" ]; then
+    echo "Error: Please provide a problem number"
+    return 1
+  fi
+  
+  local num="$1"
+  local template_path="$HOME/Workspace/study/codingtest-js/solved.ac/word.js"
+  
+  if [ ! -f "$template_path" ]; then
+    echo "Error: Template file not found at $template_path"
+    return 1
+  fi
+  
+  cat "$template_path" > "${num}.js" && nvim "${num}.js"
+}
 ```
-
-#### 풀이 복사
-
-- 문제 풀이 완료 후, 백준에 제출하기 전에 풀이를 빠르게 복사하고 싶은 경우 아래 함수도 함께 추가한다.
-- 사용법은 문제 풀이 파일이 있는 디렉토리에서 `solve {문제번호}` 커맨드를 입력하면 된다.
-- ex. `solve 2438`
-
+##### 한 줄 입력 - 구분자, 띄어쓰기 포함
 ```zsh
-solve() {
+soll() {
+  if [ -z "$1" ]; then
+    echo "Error: Please provide a problem number"
+    return 1
+  fi
+  
+  local num="$1"
+  local template_path="$HOME/Workspace/study/codingtest-js/solved.ac/line.js"
+  
+  if [ ! -f "$template_path" ]; then
+    echo "Error: Template file not found at $template_path"
+    return 1
+  fi
+  
+  cat "$template_path" > "${num}.js" && nvim "${num}.js"
+}
+```
+##### 여러 줄 입력
+```zsh
+solm() {
+  if [ -z "$1" ]; then
+    echo "Error: Please provide a problem number"
+    return 1
+  fi
+  
+  local num="$1"
+  local template_path="$HOME/Workspace/study/codingtest-js/solved.ac/multiline.js"
+  
+  if [ ! -f "$template_path" ]; then
+    echo "Error: Template file not found at $template_path"
+    return 1
+  fi
+  
+  cat "$template_path" > "${num}.js" && nvim "${num}.js"
+}
+```
+#### 풀이 복사
+- 문제 풀이 완료 후, 백준에 제출하기 전에 풀이를 빠르게 복사하고 싶은 경우 아래 함수도 함께 추가한다.
+- 사용법은 문제 풀이 파일이 있는 디렉토리에서 `solved {문제번호}` 커맨드를 입력하면 된다.
+- ex. `solved 2438`
+```zsh
+solved() {
   local num="$1"
   cat "${num}.js" | pbcopy
 }
 ```
-
 ### 한 단어 입력 - 구분자, 띄어쓰기 미포함
 - 테스트 문제 : [별 찍기 - 1 (2438)](https://www.acmicpc.net/problem/2438)
 - 템플릿 코드 : [word.js](https://github.com/heygwangjin/codingtest-js/blob/main/solved.ac/word.js)
-
 ```js
 function solution(n) {
   let result = '';
@@ -59,12 +105,9 @@ rl.on('line', (line) => {
   process.exit();
 });
 ```
-
 ### 한 줄 입력 - 구분자, 띄어쓰기 포함
-
 - 테스트 문제 : [A-B (1001)](https://www.acmicpc.net/problem/1001)
 - 템플릿 코드 : [line.js](https://github.com/heygwangjin/codingtest-js/blob/main/solved.ac/line.js)
-
 ```js
 function solution(arr) {
   let result = 0;
@@ -91,12 +134,9 @@ rl.on("line", (line) => {
   process.exit();
 });
 ```
-
 ### 여러 줄 입력
-
 - 테스트 문제 : [A+B - 3(10950)](https://www.acmicpc.net/problem/10950)
 - 템플릿 코드 : [multiline.js](https://github.com/heygwangjin/codingtest-js/blob/main/solved.ac/multiline.js)
-
 ```js
 function solution(arr) {
   let result = '';
