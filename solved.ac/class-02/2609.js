@@ -1,6 +1,6 @@
 function gcd(a, b) {
   if (b === 0) return a;
-  return gcd(b, a % b);
+  return gcd(b, a % b); // gcd(a, b) = gcd(b, r)
 }
 
 function lcm(a, b) {
@@ -8,7 +8,6 @@ function lcm(a, b) {
 }
 
 function solution(arr) {
-  let result = '';
   const [a, b] = arr;
   return `${gcd(a, b)}\n${lcm(a, b)}`;
 }
