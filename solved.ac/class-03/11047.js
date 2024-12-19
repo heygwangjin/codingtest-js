@@ -7,14 +7,10 @@ function solution(arr) {
   let [n, k] = arr.shift().split(' ').map(Number);
   let result = 0;
 
-  while (k > 0) {
-    for (let i = arr.length - 1; i >= 0; i--) {
-      if (k - arr[i] >= 0) {
-        k -= arr[i];
-        result++;
-        break;
-      }
-    }
+  for (let i = n - 1; i >= 0; i--) {
+    const q = Math.floor(k / arr[i]);
+    k -= q * arr[i];
+    result += q;
   }
 
   return result;
