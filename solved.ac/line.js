@@ -1,8 +1,3 @@
-/*
-  시간복잡도: 
-  풀이 시간: 
-  시도 횟수: 
-*/
 function solution(arr) {
   let result = '';
   return result;
@@ -20,7 +15,7 @@ rl.on('line', (line) => {
   input = line;
   rl.close();
 }).on('close', () => {
-  const arr = input.split(' ').map((el) => Number(el));
+  const arr = input.split(' ').map((el) => +el);
   console.log(solution(arr));
   process.exit();
 });

@@ -1,8 +1,3 @@
-/*
-  시간복잡도: 
-  풀이 시간: 
-  시도 횟수: 
-*/
 function solution(arr) {
   let result = '';
   return result;
@@ -14,10 +9,10 @@ const rl = readline.createInterface({
   output: process.stdout,
 });
 
-const arr = [];
+const inputs = [];
 rl.on('line', (line) => {
-  arr.push(line.trim());
+  inputs.push(line.trim());
 }).on('close', () => {
-  console.log(solution(arr));
+  console.log(solution(inputs));
   process.exit();
 });
