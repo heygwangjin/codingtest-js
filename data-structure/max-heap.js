@@ -45,18 +45,18 @@ class MaxHeap {
     while (index * 2 + 1 < this.size()) {
       let leftChild = index * 2 + 1;
       let rightChild = index * 2 + 2;
-      let smallerChild =
+      let largerChild =
         rightChild < this.size() &&
         this.items[rightChild] > this.items[leftChild]
           ? rightChild
           : leftChild;
 
-      if (this.items[index] >= this.items[smallerChild]) {
+      if (this.items[index] >= this.items[largerChild]) {
         break;
       }
 
-      this.swap(index, smallerChild);
-      index = smallerChild;
+      this.swap(index, largerChild);
+      index = largerChild;
     }
   }
 }
